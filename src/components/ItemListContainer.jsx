@@ -5,14 +5,7 @@ function ItemListContainer({ title }) {
     <>
       <h1>{title}</h1>
       <div>
-        <li>
-          <div>Producto 1</div>
-          <div>$100</div>
-        </li>
-        <li>
-          <div>Producto 2</div>
-          <div>$200</div>
-        </li>
+        <h1>Bienvenidos a la tienda!</h1>
       </div>
     </>
   );

@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 function ItemDetailContainer() {
+  const [item, setItem] = React.useState({});
   const idParam = useParams().id;
-  console.log("Este es el id", idParam);
 
   let itemsData = [
     {
@@ -98,17 +98,18 @@ function ItemDetailContainer() {
     },
   ];
 
-  let itemBuscado = itemsData.find((item) => item.id == idParam);
-  console.log(itemBuscado);
+  React.useEffect(() => {
+    setItem(itemsData.find((item) => item.id === Number(idParam)));
+  }, [idParam]);
 
   return (
     <div>
       <h1>Detalles del producto</h1>
       <div>
-        <h3>Producto 1</h3>
-        <img src="https://picsum.photos/200" alt="producto 1" />
+        <h3>{item.title}</h3>
+        <img src={item.img} alt={item.title} />
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <h4>Precio: $1000</h4>
+        <h4>Precio: $ {item.price}</h4>
       </div>
     </div>
   );
