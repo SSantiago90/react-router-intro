@@ -1,7 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 function Login() {
-  const [user, setUser] = React.useState("anonymous");
+  const { username, setUsername } = useContext(UserContext);
+  console.log("username del context:", username);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -10,13 +13,13 @@ function Login() {
     if (userAuth) console.log("login success!");
     console.log(evt.target);
     let userInputText = evt.target.elements[0].value;
-    setUser(userInputText);
+    setUsername(userInputText);
   };
 
   return (
     <div>
       <h1>Login</h1>
-      <small style={{ color: "#a7a7a7" }}>Usuario actual: {user}</small>
+      <small style={{ color: "#a7a7a7" }}>Usuario actual: {username}</small>
       <form
         onSubmit={handleSubmit}
         style={{
